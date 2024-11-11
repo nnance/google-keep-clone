@@ -1,101 +1,79 @@
-import Image from "next/image";
+import KeepApp, { Label, Note } from "@/components/app-page";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+export default function Page() {
+  const defaultNotes: Note[] = [
+    {
+      id: "1",
+      title: "Weekend Tasks",
+      type: "task",
+      tasks: [
+        { id: "1-1", text: "Go grocery shopping", completed: false },
+        { id: "1-2", text: "Clean the garage", completed: true },
+        { id: "1-3", text: "Finish work project", completed: false },
+      ],
+      isPinned: true,
+    },
+    {
+      id: "2",
+      title: "Books to Read",
+      type: "task",
+      tasks: [
+        { id: "2-1", text: "The Great Gatsby", completed: false },
+        { id: "2-2", text: "1984", completed: false },
+        { id: "2-3", text: "To Kill a Mockingbird", completed: true },
+      ],
+      isPinned: false,
+    },
+    {
+      id: "3",
+      title: "Project Ideas",
+      type: "markdown",
+      content: `# Project Ideas
+  
+  1. Build a personal website
+  2. Create a mobile app for task management
+  3. Develop a machine learning model for image recognition
+  
+  Remember to research the latest technologies for each project!`,
+      isPinned: true,
+    },
+    {
+      id: "4",
+      title: "Shopping List",
+      type: "task",
+      tasks: [
+        { id: "4-1", text: "Milk", completed: false },
+        { id: "4-2", text: "Eggs", completed: false },
+        { id: "4-3", text: "Bread", completed: false },
+        { id: "4-4", text: "Cheese", completed: true },
+      ],
+      isPinned: false,
+    },
+    {
+      id: "5",
+      title: "Meeting Notes",
+      type: "markdown",
+      content: `## Team Meeting - 2023-05-15
+  
+  - Discussed Q2 goals
+  - Assigned new projects to team members
+  - Scheduled next review for June 1st
+  
+  **Action Items:**
+  - John: Prepare project timeline
+  - Sarah: Research new technologies
+  - Mike: Update client presentation`,
+      isPinned: false,
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+  const defaultLabels: Label[] = [
+    { id: "1", name: "Personal" },
+    { id: "2", name: "Work" },
+    { id: "3", name: "Ideas" },
+    { id: "4", name: "To-Do" },
+    { id: "5", name: "Important" },
+  ];
+
+  return <KeepApp notes={defaultNotes} labels={defaultLabels} />;
 }

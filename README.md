@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# google-keep-clone
+
+A Google Keep clone built with Next.js, ShadCN and Tailwind CSS.
 
 ## Getting Started
 
